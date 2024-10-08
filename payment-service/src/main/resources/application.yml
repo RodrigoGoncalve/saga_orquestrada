@@ -2,13 +2,12 @@ server:
   port: 8091
 
 spring:
-
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
-        orchestrator: orchestrator
-        payment-fail: payment-fail
-        payment-success: payment-success
+      orchestrator: orchestrator
+      payment-success: payment-success
+      payment-fail: payment-fail
     consumer:
       group-id: payment-group
       auto-offset-reset: latest
@@ -30,4 +29,4 @@ logging:
   level:
     org:
       apache:
-        kafka: off
+        kafka: OFF

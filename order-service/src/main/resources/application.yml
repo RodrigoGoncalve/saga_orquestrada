@@ -2,11 +2,11 @@ server:
   port: 3000
 
 spring:
-  Kafka:
-    bootstrap-serves: ${KAFKA_BROkER:localhost:9092}
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
-        start-saga: start-saga
-        notify-ending: notify-ending
+      start-saga: start-saga
+      notify-ending: notify-ending
     consumer:
       group-id: order-group
       auto-offset-reset: latest
@@ -14,10 +14,10 @@ spring:
   data:
     mongodb:
       database: admin
-      url: ${MONGO_DB_URI:mongodb://admin:123456@localhost:27017}
+      uri: ${MONGO_DB_URI:mongodb://admin:123456@localhost:27017}
 
 logging:
   level:
-     or:
+    org:
       apache:
-        kafka: off
+        kafka: OFF

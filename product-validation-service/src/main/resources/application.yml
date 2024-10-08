@@ -2,13 +2,12 @@ server:
   port: 8090
 
 spring:
-
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
-        orchestrator: orchestrator
-        product-validation-fail: product-validation-fail
-        product-validation-success: product-validation-success
+      orchestrator: orchestrator
+      product-validation-success: product-validation-success
+      product-validation-fail: product-validation-fail
     consumer:
       group-id: product-validation-group
       auto-offset-reset: latest
@@ -30,4 +29,4 @@ logging:
   level:
     org:
       apache:
-        kafka: off
+        kafka: OFF

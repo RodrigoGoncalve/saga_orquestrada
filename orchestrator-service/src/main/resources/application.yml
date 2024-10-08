@@ -12,4 +12,4 @@ logging:
   level:
     org:
       apache:
-        kafka: off
+        kafka: OFF
