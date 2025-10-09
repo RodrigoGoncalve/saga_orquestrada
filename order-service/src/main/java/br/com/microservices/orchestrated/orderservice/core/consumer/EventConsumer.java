@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class EventConsumer {
 
-
     private final EventService eventService;
     private final JsonUtil jsonUtil;
 
@@ -22,8 +21,8 @@ public class EventConsumer {
     )
     public void consumeNotifyEndingEvent(String payload) {
         log.info("Receiving ending notification event {} from notify-ending topic", payload);
-        var event = jsonUtil.toEvent(payload);
-        eventService.notifyEnting(event);
+        var event = this.jsonUtil.toEvent(payload);
+        this.eventService.notifyEnting(event);
     }
 
 }

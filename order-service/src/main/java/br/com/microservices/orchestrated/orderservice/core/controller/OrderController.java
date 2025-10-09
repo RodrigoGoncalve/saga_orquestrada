@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/order")
+@RequestMapping("/api/order")
 public class OrderController {
 
     private final OrderService orderService;
 
     @PostMapping
     public Order createOrder(@RequestBody OrderRequest orderRequest){
-        return orderService.createOrder(orderRequest);
+        return this.orderService.createOrder(orderRequest);
     }
 
 }

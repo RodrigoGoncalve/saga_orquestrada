@@ -17,14 +17,15 @@ public class EventController {
 
     private final EventService eventService;
 
+    @GetMapping
     public Event findByFilters(EventFilters eventFilters){
-        return eventService
+        return this.eventService
                 .findByFilters(eventFilters);
     }
 
     @GetMapping("all")
     public List<Event> findAll(){
-        return eventService.findAll();
+        return this.eventService.findAll();
     }
 
 }

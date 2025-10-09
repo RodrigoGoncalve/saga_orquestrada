@@ -23,30 +23,31 @@ public class EventService {
     public void notifyEnting(Event event){
         event.setOrderId(event.getOrderId());
         event.setCreatedAt(LocalDateTime.now());
+        this.save(event);
         log.info("Order {} with saga notified! TransactionaId: {}", event.getOrderId(), event.getTransactionId());
     }
 
     public List<Event> findAll(){
-        return eventRepository.findAllByOrderByCreatedAtDesc();
+        return this.eventRepository.findAllByOrderByCreatedAtDesc();
     }
 
     public Event findByFilters(EventFilters filters){
-        validateEmptyFilters(filters);
+        this.validateEmptyFilters(filters);
         if(!isEmpty(filters.getOrderId())){
-            return findByOrderid(filters.getOrderId());
+            return this.findByOrderid(filters.getOrderId());
         }else {
-            return findByTransactionalId(filters.getTransactionId());
+            return this.findByTransactionalId(filters.getTransactionId());
         }
     }
 
     private Event findByOrderid(String orderId){
-        return eventRepository.findTop1ByOrderIdOrderByCreatedAtDesc(orderId)
+        return this.eventRepository.findTop1ByOrderIdOrderByCreatedAtDesc(orderId)
                 .orElseThrow(() -> new ValidationException("Event not found by orderId. "));
 
     }
 
     private Event findByTransactionalId(String transactionalId){
-        return eventRepository.findTop1ByTransactionIdOrderByCreatedAtDesc(transactionalId)
+        return this.eventRepository.findTop1ByTransactionIdOrderByCreatedAtDesc(transactionalId)
                 .orElseThrow(() -> new ValidationException("Event not found by transactionalId. "));
 
     }
@@ -54,12 +55,12 @@ public class EventService {
 
     private void validateEmptyFilters(EventFilters filters){
         if (isEmpty(filters.getOrderId()) && isEmpty(filters.getTransactionId())){
-            throw new ValidationException("Orderid or TransactionId must be informed.");
+            throw new ValidationException("OrderId or TransactionId must be informed.");
         }
     }
 
     public Event save(Event event){
-        return eventRepository.save(event);
+        return this.eventRepository.save(event);
     }
 
 }
