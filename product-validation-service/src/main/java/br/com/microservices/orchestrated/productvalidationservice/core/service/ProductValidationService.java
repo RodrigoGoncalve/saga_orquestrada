@@ -38,7 +38,6 @@ public class ProductValidationService {
             this.checkCurrentValidation(event);
             this.createValiation(event, true);
             this.handleSuccess(event);
-
         } catch (Exception ex) {
             log.error("Error trying to validate products: ", ex);
             this.handleFailCurrentNotExacvuted(event, ex.getMessage());
@@ -88,7 +87,6 @@ public class ProductValidationService {
         event.setStatus(SUCCESS);
         event.setSource(CURRENT_SOURCE);
         addHistory(event, "Products are validated successfully!");
-
     }
 
     private void addHistory(Event event, String message) {

@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class OrderProduct {
 
     private Product product;
-    private int qunatity;
+    private int quantity;
 }
