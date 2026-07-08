@@ -101,13 +101,13 @@ public class InventoryService {
     }
 
     private void addHistory(Event event, String message) {
-        var hhistory = History.builder()
+        var history = History.builder()
                 .source(event.getSource())
                 .status(event.getStatus())
                 .message(message)
                 .createdAt(LocalDateTime.now())
                 .build();
-        event.addToHistory(hhistory);
+        event.addToHistory(history);
     }
 
     private void handleFailCurrentNotExacvuted(Event event, String message) {
